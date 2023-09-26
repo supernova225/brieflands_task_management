@@ -6,8 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/**
+ * @group Auth
+ */
 class RegisterController extends Controller
 {
+
+    /**
+     * Auth Register
+     *
+     * @bodyParam first_name string required
+     * @bodyParam last_name string required
+     * @bodyParam email string required
+     * @bodyParam password string required
+     *
+     *
+     */
     public function register(Request $request)
     {
         $user = User::create([
