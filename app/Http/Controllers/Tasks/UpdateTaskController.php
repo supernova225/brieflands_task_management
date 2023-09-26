@@ -30,7 +30,7 @@ class UpdateTaskController extends Controller
             throw new \InvalidArgumentException('تسک مورد نظر برای شما نمی‌باشد.');
         }
 
-        $task = Task::update([
+        $task = $task->update([
             'title' => $request->title,
             'description' => $request->description,
             'deadline' => $request->deadline,
