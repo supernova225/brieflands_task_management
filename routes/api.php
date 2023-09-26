@@ -21,6 +21,7 @@ Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 
 Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
+    // Logout
     Route::post('/logout', [\App\Http\Controllers\Auth\LogoutController::class, 'logout']);
 
     // Tasks
@@ -28,8 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/tasks/{task}', [\App\Http\Controllers\Tasks\UpdateTaskController::class, 'update']);
     Route::delete('/tasks/{task}', [\App\Http\Controllers\Tasks\DeleteTaskController::class, 'delete']);
     Route::get('/tasks', [\App\Http\Controllers\Tasks\ListTaskController::class, 'list']);
-});
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    // Task Status
+    Route::post('/task/{task}/status', [\App\Http\Controllers\TaskStatuses\ChangeTaskStatusController::class, 'changeStatus']);
 });

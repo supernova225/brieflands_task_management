@@ -20,11 +20,11 @@ class DeleteTaskController extends Controller
     public function delete(Task $task)
     {
         if (auth()->id() != $task->user_id) {
-            throw new \InvalidArgumentException('تسک مورد نظر برای شما نمی‌باشد.');
+            throw new \InvalidArgumentException(__('tasks.exceptions.not_for_user'));
         }
 
         $task->delete();
 
-        return response(['message' => 'تسک مورد نظر با موفقیت حذف شد.']);
+        return response(__('tasks.messages.delete'));
     }
 }

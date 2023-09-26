@@ -19,6 +19,6 @@ class LogoutController extends Controller
     {
         auth()->user()->tokens()->delete();
 
-        return response(['message' => 'با موفقیت از حساب کاربری خود خارج شدید.']);
+        return response(__('auth.logout'));
     }
 }

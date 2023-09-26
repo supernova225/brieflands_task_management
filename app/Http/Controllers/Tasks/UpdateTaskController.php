@@ -27,7 +27,7 @@ class UpdateTaskController extends Controller
     public function update(UpdateTaskRequest $request, Task $task)
     {
         if (auth()->id() != $task->user_id) {
-            throw new \InvalidArgumentException('تسک مورد نظر برای شما نمی‌باشد.');
+            throw new \InvalidArgumentException(__('tasks.exceptions.not_for_user'));
         }
 
         $task = $task->update([
@@ -37,6 +37,6 @@ class UpdateTaskController extends Controller
             'status_id' => $request->status_id,
         ]);
 
-        return response(['message' => 'تسک مورد نظر با موفقیت ویرایش شد.']);
+        return response(__('tasks.messages.update'));
     }
 }

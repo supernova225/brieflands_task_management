@@ -25,11 +25,11 @@ class LoginController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user) {
-            throw new AuthenticationException(['message' => 'کاربری با ایمیل مورد نظر یافت نشد.']);
+            throw new AuthenticationException(['message' => __('password.user')]);
         }
 
         if (!\Hash::check($request->password, $user->password)) {
-            throw new AuthenticationException(['message' => 'رمز عبور اشتباه است.']);
+            throw new AuthenticationException(['message' => __('auth.password')]);
         }
 
         $token = $user->createToken('my_task_management')->plainTextToken;

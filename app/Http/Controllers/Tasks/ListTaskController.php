@@ -27,6 +27,13 @@ class ListTaskController extends Controller
 
         $page = \request('page', 1);
 
+        [$tasks, $cloneQuery] = $this->getTasks($limit, $page);
+
+        return new TaskCollection($tasks, $limit, $page, $cloneQuery);
+    }
+
+    private function getTasks(int $limit, int $page)
+    {
         $query = Task::where('user_id', auth()->id());
 
         if (\request('search')) {
@@ -41,6 +48,6 @@ class ListTaskController extends Controller
 
         $tasks = $query->take($limit)->skip(($page - 1) * $limit)->get();
 
-        return new TaskCollection($tasks, $limit, $page, $cloneQuery);
+        return [$tasks, $cloneQuery];
     }
 }
