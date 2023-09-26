@@ -31,5 +31,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/tasks', [\App\Http\Controllers\Tasks\ListTaskController::class, 'list']);
 
     // Task Status
-    Route::post('/task/{task}/status', [\App\Http\Controllers\TaskStatuses\ChangeTaskStatusController::class, 'changeStatus']);
+    Route::put('/task/{task}/status', [\App\Http\Controllers\TaskStatuses\ChangeTaskStatusController::class, 'changeStatus']);
 });
