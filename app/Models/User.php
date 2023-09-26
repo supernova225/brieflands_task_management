@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = \Hash::make($password);
     }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'user_id', 'id');
+    }
 }
