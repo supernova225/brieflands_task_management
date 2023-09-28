@@ -24,7 +24,7 @@ class TaskFactory extends Factory
 
         return [
             'user_id' => fake()->randomElement($userIdDs),
-            'title' => fake()->title,
+            'title' => fake()->word,
             'description' => fake()->text,
             'deadline' => fake()->dateTimeBetween('-1 weeks', '+1 weeks'),
             'status_id' => fake()->randomElement($statusesID),

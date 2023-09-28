@@ -15,21 +15,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Register
-Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'register']);
+Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
 
 // Login
-Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 
 Route::middleware('auth:sanctum')->group(function () {
     // Logout
-    Route::post('/logout', [\App\Http\Controllers\Auth\LogoutController::class, 'logout']);
+    Route::post('/logout', [\App\Http\Controllers\Auth\LogoutController::class, 'logout'])->name('logout');
 
     // Tasks
-    Route::post('/tasks', [\App\Http\Controllers\Tasks\StoreTaskController::class, 'store']);
-    Route::put('/tasks/{task}', [\App\Http\Controllers\Tasks\UpdateTaskController::class, 'update']);
-    Route::delete('/tasks/{task}', [\App\Http\Controllers\Tasks\DeleteTaskController::class, 'delete']);
-    Route::get('/tasks', [\App\Http\Controllers\Tasks\ListTaskController::class, 'list']);
+    Route::post('/tasks', [\App\Http\Controllers\Tasks\StoreTaskController::class, 'store'])->name('tasks.store');
+    Route::put('/tasks/{task}', [\App\Http\Controllers\Tasks\UpdateTaskController::class, 'update'])->name('tasks.update');
+    Route::delete('/tasks/{task}', [\App\Http\Controllers\Tasks\DeleteTaskController::class, 'delete'])->name('tasks.delete');
+    Route::get('/tasks', [\App\Http\Controllers\Tasks\ListTaskController::class, 'list'])->name('tasks.list');
 
     // Task Status
-    Route::put('/task/{task}/status', [\App\Http\Controllers\TaskStatuses\ChangeTaskStatusController::class, 'changeStatus']);
+    Route::put('/task/{task}/status', [\App\Http\Controllers\TaskStatuses\ChangeTaskStatusController::class, 'changeStatus'])->name('change.task.status');
 });
