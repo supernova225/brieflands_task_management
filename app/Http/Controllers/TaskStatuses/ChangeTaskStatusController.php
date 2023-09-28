@@ -23,9 +23,7 @@ class ChangeTaskStatusController extends Controller
      */
     public function changeStatus(ChangeTaskStatusRequest $request, Task $task)
     {
-        if (auth()->id() != $task->user_id) {
-            throw new \InvalidArgumentException(__('tasks.exceptions.not_for_user'));
-        }
+        $this->authorize('update', $task);
 
         $task->update([
             'status_id' => $request->status_id,

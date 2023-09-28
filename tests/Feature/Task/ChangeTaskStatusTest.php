@@ -36,7 +36,7 @@ class ChangeTaskStatusTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testChangeTaskStatusWhenUserNotLoggedIngAndOwnerTask(): void
+    public function testChangeTaskStatusWhenUserNotLoggedInAndOwnerTask(): void
     {
         $user = User::factory()->create();
 
@@ -61,7 +61,7 @@ class ChangeTaskStatusTest extends TestCase
         $response->assertStatus(302);
     }
 
-    public function testChangeTaskStatusWhenUserLoggedIngAndNotOwnerTask(): void
+    public function testChangeTaskStatusWhenUserLoggedInAndNotOwnerTask(): void
     {
         $user = User::factory()->create();
 

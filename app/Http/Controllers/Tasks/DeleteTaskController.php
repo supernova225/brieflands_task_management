@@ -19,9 +19,7 @@ class DeleteTaskController extends Controller
      */
     public function delete(Task $task)
     {
-        if (auth()->id() != $task->user_id) {
-            throw new \InvalidArgumentException(__('tasks.exceptions.not_for_user'));
-        }
+        $this->authorize('delete', $task);
 
         $task->delete();
 

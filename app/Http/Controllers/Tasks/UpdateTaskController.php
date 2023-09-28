@@ -26,9 +26,7 @@ class UpdateTaskController extends Controller
      */
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        if (auth()->id() != $task->user_id) {
-            throw new \InvalidArgumentException(__('tasks.exceptions.not_for_user'));
-        }
+        $this->authorize('update', $task);
 
         $task = $task->update([
             'title' => $request->title,
