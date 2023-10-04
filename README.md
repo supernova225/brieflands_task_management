@@ -14,7 +14,7 @@ For each model, there is a "migration" that is responsible for creating tables i
 
 ## Policy
 
-Because only the person who created the "task" can edit or delete the desired "task", "policies" have been used in such a way that it is checked after the request for editing or deletion to make sure that Only the "task" owner can edit or delete the task
+Because only the person who created the "task" can edit or delete the desired "task", "[policies](https://laravel.com/docs/10.x/authorization#generating-policies)" have been used in such a way that it is checked after the request for editing or deletion to make sure that Only the "task" owner can edit or delete the task
 
 ## Resources & Resource Collections
 
