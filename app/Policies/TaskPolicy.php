@@ -38,10 +38,8 @@ class TaskPolicy
     public function update(User $user, Task $task): Response
     {
         return $user->id === $task->user_id
-            ?
-            Response::allow()
-            :
-            Response::deny(__('tasks.exceptions.not_for_user'));
+            ? Response::allow()
+            : Response::deny(__('tasks.exceptions.not_for_user'));
     }
 
     /**
@@ -49,11 +47,10 @@ class TaskPolicy
      */
     public function delete(User $user, Task $task): Response
     {
-        return $user->id === $task->user_id
-            ?
-            Response::allow()
-            :
-            Response::deny(__('tasks.exceptions.not_for_user'));
+        // dd(auth()->user(), $task);
+        return $user->id == $task->assignee_id
+            ? Response::allow()
+            : Response::deny(__('tasks.exceptions.not_for_user'));
     }
 
     /**

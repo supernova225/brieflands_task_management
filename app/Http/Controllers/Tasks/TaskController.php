@@ -50,7 +50,7 @@ class TaskController extends Controller
     public function store(StoreTaskRequest $request)
     {
         $task = Task::create([
-            'user_id' => auth()->id(),
+            'assignee_id' => auth()->id(),
             'title' => $request->title,
             'description' => $request->description,
             'deadline' => $request->deadline,
