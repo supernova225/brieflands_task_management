@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreignId('assignee_id')->references('id')->on('users')->cascadeOnDelete();
             $table->string('title');
             $table->text('description')->nullable();
             $table->timestamp('deadline')->nullable();

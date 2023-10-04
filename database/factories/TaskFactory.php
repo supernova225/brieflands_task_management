@@ -20,14 +20,12 @@ class TaskFactory extends Factory
     {
         $userIdDs = User::pluck('id');
 
-        $statusesID = Status::pluck('id');
-
         return [
-            'user_id' => fake()->randomElement($userIdDs),
+            'assignee_id' => fake()->randomElement($userIdDs),
             'title' => fake()->word,
-            'description' => fake()->text,
+            'description' => fake()->paragraph,
             'deadline' => fake()->dateTimeBetween('-1 weeks', '+1 weeks'),
-            'status_id' => fake()->randomElement($statusesID),
+            'status' => fake()->randomElement(['todo', 'doing', 'done']),
         ];
     }
 }
