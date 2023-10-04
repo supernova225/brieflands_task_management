@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\TaskStatuses;
 
+use App\Enums\TaskStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
 
 class ChangeTaskStatusRequest extends FormRequest
 {
@@ -22,7 +24,7 @@ class ChangeTaskStatusRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'status_id' => 'required|integer|exists:statuses,id',
+            'status' => ['required', new Enum(TaskStatusEnum::class)],
         ];
     }
 }

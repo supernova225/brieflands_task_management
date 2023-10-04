@@ -19,18 +19,16 @@ class ChangeTaskStatusTest extends TestCase
 
         $this->actingAs($user);
 
-        $statuses = Status::factory()->count(4)->create();
-
         $task = $this->post(route('tasks.store'), [
-            'user_id' => $user->id,
+            'assignee_id' => $user->id,
             'title' => 'sample title',
             'description' => 'sample description',
             'deadline' => '2024-01-25',
-            'status_id' => $statuses->first()->id,
+            'status' => 'todo',
         ]);
 
         $response = $this->put(route('change.task.status', $task->getOriginalContent()->id), [
-            'status_id' => 2,
+            'status' => 'doing',
         ]);
 
         $response->assertStatus(200);
@@ -42,20 +40,18 @@ class ChangeTaskStatusTest extends TestCase
 
         $this->actingAs($user);
 
-        $statuses = Status::factory()->count(4)->create();
-
         $task = $this->post(route('tasks.store'), [
-            'user_id' => $user->id,
+            'assignee_id' => $user->id,
             'title' => 'sample title',
             'description' => 'sample description',
             'deadline' => '2024-01-25',
-            'status_id' => $statuses->first()->id,
+            'status' => 'todo',
         ]);
 
         $this->post(route('logout'));
 
         $response = $this->put(route('change.task.status', $task->getOriginalContent()->id), [
-            'status_id' => 2,
+            'status' => 'doing',
         ]);
 
         $response->assertStatus(302);
@@ -69,14 +65,12 @@ class ChangeTaskStatusTest extends TestCase
 
         $this->actingAs($user);
 
-        $statuses = Status::factory()->count(4)->create();
-
         $task = $this->post(route('tasks.store'), [
-            'user_id' => $user->id,
+            'assignee_id' => $user->id,
             'title' => 'sample title',
             'description' => 'sample description',
             'deadline' => '2024-01-25',
-            'status_id' => $statuses->first()->id,
+            'status' => 'todo',
         ]);
 
         $this->post(route('logout'));
@@ -84,7 +78,7 @@ class ChangeTaskStatusTest extends TestCase
         $this->actingAs($anotherUser);
 
         $response = $this->put(route('change.task.status', $task->getOriginalContent()->id), [
-            'status_id' => 2,
+            'status' => 'doing',
         ]);
 
         $response->assertStatus(302);

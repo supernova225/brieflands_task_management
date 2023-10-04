@@ -19,8 +19,6 @@ class TaskListTest extends TestCase
 
         $this->actingAs($user);
 
-        $status = Status::factory()->count(3)->create();
-
         $tasks = Task::factory()->count(20)->create();
 
         $response = $this->get(route('tasks.list'));
@@ -31,8 +29,6 @@ class TaskListTest extends TestCase
     public function testTaskListWhenUserIsOwnerTasksAndNotLoggedIn(): void
     {
         $user = User::factory()->create();
-
-        $status = Status::factory()->count(3)->create();
 
         $tasks = Task::factory()->count(20)->create();
 

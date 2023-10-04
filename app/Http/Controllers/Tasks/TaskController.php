@@ -78,7 +78,6 @@ class TaskController extends Controller
      * @bodyParam deadline date_format
      * @bodyParam status_id integer required
      *
-     *
      */
     public function update(Request $request, Task $task)
     {

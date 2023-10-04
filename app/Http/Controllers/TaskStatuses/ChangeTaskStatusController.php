@@ -19,14 +19,13 @@ class ChangeTaskStatusController extends Controller
      *
      * @urlParam task integer required
      *
-     *
      */
     public function changeStatus(ChangeTaskStatusRequest $request, Task $task)
     {
         $this->authorize('update', $task);
 
         $task->update([
-            'status_id' => $request->status_id,
+            'status' => $request->status,
         ]);
 
         return response(__('tasks.messages.update'));

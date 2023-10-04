@@ -19,21 +19,19 @@ class TaskUpdateTest extends TestCase
 
         $this->actingAs($user);
 
-        $status = Status::factory()->create();
-
         $task = Task::create([
-            'user_id' => $user->id,
+            'assignee_id' => $user->id,
             'title' => 'sample title',
             'description' => 'sample description',
             'deadline' => '2024-01-25',
-            'status_id' => $status->id,
+            'status' => 'todo',
         ]);
 
         $response = $this->put(route('tasks.update', $task->id), [
             'title' => 'update sample title',
             'description' => 'update sample description',
             'deadline' => '2025-01-25',
-            'status_id' => $status->id,
+            'status' => 'todo',
         ]);
 
         $response->assertStatus(200);
@@ -43,21 +41,19 @@ class TaskUpdateTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $status = Status::factory()->create();
-
         $task = Task::create([
-            'user_id' => $user->id,
+            'assignee_id' => $user->id,
             'title' => 'sample title',
             'description' => 'sample description',
             'deadline' => '2024-01-25',
-            'status_id' => $status->id,
+            'status' => 'todo',
         ]);
 
         $response = $this->put(route('tasks.update', $task->id), [
             'title' => 'update sample title',
             'description' => 'update sample description',
             'deadline' => '2025-01-25',
-            'status_id' => $status->id,
+            'status' => 'todo',
         ]);
 
 
@@ -72,21 +68,19 @@ class TaskUpdateTest extends TestCase
 
         $this->actingAs($anotherUsers);
 
-        $status = Status::factory()->create();
-
         $task = Task::create([
-            'user_id' => $userTaskOwner->id,
+            'assignee_id' => $userTaskOwner->id,
             'title' => 'sample title',
             'description' => 'sample description',
             'deadline' => '2024-01-25',
-            'status_id' => $status->id,
+            'status' => 'todo',
         ]);
 
         $response = $this->put(route('tasks.update', $task->id), [
             'title' => 'update sample title',
             'description' => 'update sample description',
             'deadline' => '2025-01-25',
-            'status_id' => $status->id,
+            'status' => 'doing',
         ]);
 
         $response->assertStatus(403);

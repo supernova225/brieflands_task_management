@@ -13,7 +13,6 @@ class LogoutController extends Controller
     /**
      * Auth Logout
      *
-     *
      */
     public function logout()
     {

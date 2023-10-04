@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
  */
 class RegisterController extends Controller
 {
-
     /**
      * Auth Register
      *
@@ -20,7 +19,6 @@ class RegisterController extends Controller
      * @bodyParam last_name string required
      * @bodyParam email string required
      * @bodyParam password string required
-     *
      *
      */
     public function register(RegisterRequest $request)

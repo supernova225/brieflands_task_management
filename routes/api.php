@@ -27,14 +27,6 @@ Route::middleware('auth:sanctum')->group(function () {
     // Tasks
     Route::apiResource('tasks', \App\Http\Controllers\Tasks\TaskController::class)->except('show');
 
-    // Route::post('/tasks', [\App\Http\Controllers\Tasks\StoreTaskController::class, 'store'])->name('tasks.store');
-    // Route::put('/tasks/{task}', [\App\Http\Controllers\Tasks\UpdateTaskController::class, 'update'])->name('tasks.update');
-    // Route::delete('/tasks/{task}', [\App\Http\Controllers\Tasks\DeleteTaskController::class, 'delete'])->name('tasks.delete');
-    // Route::get('/tasks', [\App\Http\Controllers\Tasks\ListTaskController::class, 'list'])->name('tasks.list');
-
     // Task Status
     Route::put('/task/{task}/status', [\App\Http\Controllers\TaskStatuses\ChangeTaskStatusController::class, 'changeStatus'])->name('change.task.status');
-
-    // Statuses
-    Route::get('/statuses', [\App\Http\Controllers\Statuses\ListStatusController::class, 'list'])->name('statuses.list');
 });

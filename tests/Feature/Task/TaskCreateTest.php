@@ -19,14 +19,12 @@ class TaskCreateTest extends TestCase
 
         $this->actingAs($user);
 
-        $status = Status::factory()->create();
-
         $response = $this->post(route('tasks.store'), [
             'user_id' => $user->id,
             'title' => 'sample title',
             'description' => 'sample description',
             'deadline' => '2024-01-25',
-            'status_id' => $status->id,
+            'status' => 'todo',
         ]);
 
         $response->assertStatus(201);
@@ -36,14 +34,12 @@ class TaskCreateTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $status = Status::factory()->create();
-
         $response = $this->post(route('tasks.store'), [
             'user_id' => $user->id,
             'title' => 'sample title',
             'description' => 'sample description',
             'deadline' => '2024-01-25',
-            'status_id' => $status->id,
+            'status' => 'todo',
         ]);
 
         $response->assertStatus(302);
