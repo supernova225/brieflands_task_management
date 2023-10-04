@@ -17,12 +17,8 @@ class TaskResource extends JsonResource
         return [
             'title' => $this?->title,
             'description' => $this?->description,
-            'deadline' => $this?->deadline,
-            'status' => [
-                'id' => $this->status?->id,
-                'title' => $this->status?->title,
-                'description' => $this?->status?->description,
-            ],
+            'deadline' => $this?->deadlizne,
+            'status' => $this?->status,
         ];
     }
 }
